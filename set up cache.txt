@@ -1,0 +1,7 @@
+setx HF_HOME "C:\Notes\Research Try Page Automation\"
+setx TRANSFORMERS_CACHE "C:\Notes\Research Try Page Automation\models"
+setx SENTECE_TRANSFORMERS_CACHE "C:\Notes\Research Try Page Automation\sentence-transformers"
+
+
+
+setx HF_HOME "C:\hf_cache"

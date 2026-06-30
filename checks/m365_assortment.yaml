@@ -1,0 +1,87 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Microsoft 365 Basic PDP
+# Run with: python run.py --checks checks/m365_assortment.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/store/b/workplace-discount-program-microsoft-365"
+page: "m365_assortment"
+
+
+checks:
+
+  # ── Promo text — all regions except de-de, en-gb, he-il ─────────────────────────────────
+  - name:     "Promo text"
+    locator:  'div.disclaimer-conent p'
+    nth:      1
+    expected: >-
+      Subscription automatically renews at the regular price and selected term, 
+      unless cancelled in Microsoft account. See
+    exclude_regions:
+      - en-gb
+      - de-de
+      - he-il
+
+  # ── Promo text — en-gb only ─────────────────────────────────
+  - name:     "Promo text (en-gb)"
+    locator:  'div.disclaimer-conent p'
+    nth:      1
+    expected: >-
+      Subscription automatically renews at the regular price and selected term, 
+      unless cancelled in Microsoft account. See
+    regions:
+      - en-gb
+
+  # ── Promo text — de-de only ─────────────────────────────────
+  - name:     "Promo text (de-de)"
+    locator:  'div.disclaimer-conent p'
+    nth:      1
+    expected: >-
+      Subscription automatically renews at the regular price and selected term, 
+      unless cancelled. See
+    regions:
+      - de-de
+
+  # ── Promo text — he-il only ─────────────────────────────────
+  - name:     "Promo text (he-il)"
+    locator:  'div.disclaimer-conent p'
+    nth:      1
+    expected: >-
+      Subscription continues to be charged at the regular price and selected term, 
+      unless cancelled in Microsoft account. See
+    regions:
+      - he-il
+
+  # ── Terms link text — all regions except en-gb ────────────────────────────
+  - name:     "Terms link text"
+    locator:  'div.disclaimer-conent p a'
+    expected: "Microsoft Store Terms of Sale."
+    exclude_regions:
+      - en-gb
+
+  # ── Terms link text — en-gb only ─────────────────────────────────────────
+  - name:     "Terms link text (en-gb)"
+    locator:  'div.disclaimer-conent p a'
+    expected: "About Recurring Billing."
+    regions:
+      - en-gb
+
+  # ── Terms link aria-label — all regions except en-gb ─────────────────────
+  - name:      "Terms link aria-label"
+    locator:   'div.disclaimer-conent p a'
+    type:      attribute
+    attribute: aria-label
+    expected:  "Learn more about the Microsoft Store Terms of Sale."
+    semantic:  true      # use semantic match — other languages translate the aria-label
+    exclude_regions:
+      - en-gb
+
+  # ── Terms link aria-label — en-gb only ───────────────────────────────────
+  - name:      "Terms link aria-label (en-gb)"
+    locator:   'div.disclaimer-conent p a'
+    # locator:   '[data-automation-test-id="buy-box-promo-text-right-body"] a[href*="fwlink"]'
+    type:      attribute
+    attribute: aria-label
+    expected:  "Learn more about recurring billing subscriptions in the United Kingdom."
+    semantic:  true
+    regions:
+      - en-gb

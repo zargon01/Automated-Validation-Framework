@@ -1,0 +1,106 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Office Home & Business 2024 PDP
+# Run with: python run.py --checks checks/office_home_business.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/office-home-business-2024/cfq7ttc0pbm7"
+page: "office_home_business"
+
+# Regions where the upsell banner + CTAs are present
+_en_regions: &en_regions
+  - en-us
+  - en-ca
+  - fr-ca
+  - es-mx
+  - en-au
+  - ja-jp
+  - en-gb
+  - fr-fr
+  - de-de
+
+checks:
+
+  # ── Badge ──────────────────────────────────────────────────────────────────
+  - name:     "First month free badge"
+    locator:  "span.badge"
+    expected: "First month free"
+    regions:  *en_regions
+
+  # ── Upsell banner ──────────────────────────────────────────────────────────
+  - name:     "Upsell banner heading"
+    locator:  'h2[data-automation-test-id="buy-box-upsell-promo-banner-heading"]'
+    expected: "Don't miss out: Unlock more benefits with Microsoft 365 Personal"
+    regions:  *en_regions
+
+  - name:     "Upsell banner body"
+    locator:  'p[data-automation-test-id="buy-box-upsell-promo-banner-body"]'
+    expected: >-
+      Experience the full power of your Office apps with AI assistance from Copilot
+      built in. Create drafts in Word, simplify data in Excel into actions, and
+      fine-tune presentations in seconds—plus get 1 TB of cloud storage, advanced
+      security, and access across all devices.
+    regions:  *en_regions
+
+  # ── CTA 1 ─────────────────────────────────────────────────────────────────
+  - name:     "CTA 1 text"
+    locator:  "a.primary-buy-button"
+    nth:      0
+    expected: "Try free for 1 month"
+    regions:  *en_regions
+
+  - name:     "CTA 1 aria-label"
+    locator:  "a.primary-buy-button"
+    nth:      0
+    type:     attribute
+    attribute: aria-label
+    expected: "Try Microsoft 365 Personal free for 1 month."
+    semantic:  true
+    regions:  *en_regions
+
+  - name:     "CTA 1 URL"
+    locator:  "a.primary-buy-button"
+    nth:      0
+    type:     attribute
+    attribute: href
+    expected: "https://www.microsoft.com/{region}/microsoft-365/try-prs"
+    regions:  *en_regions
+
+  # ── CTA 2 ─────────────────────────────────────────────────────────────────
+  - name:     "CTA 2 text"
+    locator:  "a.primary-buy-button"
+    nth:      1
+    expected: "See other options"
+    regions:  *en_regions
+
+  - name:     "CTA 2 aria-label"
+    locator:  "a.primary-buy-button"
+    nth:      1
+    type:     attribute
+    attribute: aria-label
+    expected: "Learn more about other Microsoft 365 options."
+    semantic:  true
+    regions:  *en_regions
+
+  - name:     "CTA 2 URL"
+    locator:  "a.primary-buy-button"
+    nth:      1
+    type:     attribute
+    attribute: href
+    expected: "https://www.microsoft.com/{region}/microsoft-365/buy/compare-all-microsoft-365-products"
+    regions:  *en_regions
+
+  # ── Accordion (all regions) ────────────────────────────────────────────────
+  - name:     "Accordion first panel text"
+    locator:  'div.accordion-body p'
+    nth: 0
+    expected: >-
+      Everyone gets their own apps and storage. And with Microsoft 365 Premium,
+      you also get extensive usage on advanced AI experiences and access to Copilot
+      features currently exclusive to Premium subscribers. (AI features only available
+      to subscription owner and cannot be shared; AI usage limits apply; minimum age
+      limits may apply to subscription activation and use of AI features.
+
+  - name:     "Accordion second button text"
+    locator:  "li h3 button"
+    nth:      1
+    expected: "I'm a student, parent, or educator. Which version of Microsoft 365 should I choose?"

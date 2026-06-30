@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Powerpoint PDP Metadata updates
+# Run with: python run.py --checks checks/powerpoint_pdp_meta_updates.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/powerpoint/CFQ7TTC0PBMC"
+page: "powerpoint_pdp_meta_updates"
+screenshot_dir: "screenshots_powerpoint_pdp"
+excel_file:     "locales_powerpoint_pdp.xlsx"
+
+
+checks:
+
+  # ── Page Title ─────────────────────────────────
+  - name:     "Page Title"
+    locator:  'title'
+    type:    head
+    expected: "Buy Microsoft PowerPoint (PC or Mac) | Cost of PowerPoint Only or Bundled"
+    semantic: true
+
+  # ── Page Meta Description ─────────────────────
+  - name:      "Page Meta Description"
+    locator:   'meta[name="description"]'
+    type:      attribute
+    attribute: content
+    expected:  "Create standout presentations in PowerPoint with smart suggestions for images and themes, advanced templates, and more. Find pricing and digital download options at Microsoft Store. For Windows or Mac. "
+    semantic:  true      
+    

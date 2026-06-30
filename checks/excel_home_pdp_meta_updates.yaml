@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Excel Home PDP Metadata updates
+# Run with: python run.py --checks checks/excel_home_pdp_meta_updates.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/excel-home/CFQ7TTC0PR28"
+page: "excel_home_pdp_meta_updates"
+screenshot_dir: "screenshots_excel_home_pdp"
+excel_file:     "locales_excel_home_pdp.xlsx"
+
+
+checks:
+
+  # ── Page Title ─────────────────────────────────
+  - name:     "Page Title"
+    locator:  'title'
+    type:    head
+    expected: "Buy & Download Excel Home Edition (PC or Mac) | Microsoft Store"
+    semantic: true
+
+  # ── Page Meta Description ─────────────────────
+  - name:      "Page Meta Description"
+    locator:   'meta[name="description"]'
+    type:      attribute
+    attribute: content
+    expected:  "Elevate your content with Microsoft Excel Home’s smart visualization suggestions, templates, and more. Find pricing and digital download options at Microsoft Store. For Windows or Mac."
+    semantic:  true      
+    

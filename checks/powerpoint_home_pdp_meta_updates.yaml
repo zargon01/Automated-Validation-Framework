@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Powerpoint Home PDP Metadata updates
+# Run with: python run.py --checks checks/powerpoint_home_pdp_meta_updates.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/powerpoint-home/CFQ7TTC0PJJZ"
+page: "powerpoint_home_pdp_meta_updates"
+screenshot_dir: "screenshots_powerpoint_home_pdp_extra"
+excel_file:     "locales_powerpoint_home_pdp_extra.xlsx"
+
+
+checks:
+
+  # ── Page Title ─────────────────────────────────
+  - name:     "Page Title"
+    locator:  'title'
+    type:    head
+    expected: "Buy & Download PowerPoint Home Edition (PC or Mac) | Microsoft Store"
+    semantic: true
+
+  # ── Page Meta Description ─────────────────────
+  - name:      "Page Meta Description"
+    locator:   'meta[name="description"]'
+    type:      attribute
+    attribute: content
+    expected:  "Create standout presentations in PowerPoint Home with advanced templates, smart assistance, and more. Find pricing and digital download options at Microsoft Store. For Windows or Mac."
+    semantic:  true      
+    

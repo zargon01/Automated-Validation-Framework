@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Microsoft 365 Basic PDP
+# Run with: python run.py --checks checks/outlook_pdp_meta_updates.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/outlook/CFQ7TTC0PBMD"
+page: "outlook_pdp_meta_updates"
+screenshot_dir: "screenshots_outlook_pdp"
+excel_file:     "locales_outlook_pdp.xlsx"
+
+
+checks:
+
+  # ── Page Title ─────────────────────────────────
+  - name:     "Page Title"
+    locator:  'title'
+    type:    head
+    expected: "Buy Microsoft Outlook (PC or Mac) | Price of Outlook with Microsoft 365 or Standalone"
+    semantic: true
+
+  # ── Page Meta Description ─────────────────────
+  - name:      "Page Meta Description"
+    locator:   'meta[name="description"]'
+    type:      attribute
+    attribute: content
+    expected:  "Get the Microsoft Outlook app to master your email, contacts, and calendar. Find pricing, software download options, and more at Microsoft Store. For Windows or Mac."
+    semantic:  true      
+    

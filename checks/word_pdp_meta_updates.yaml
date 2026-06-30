@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Microsoft 365 Basic PDP
+# Run with: python run.py --checks checks/word_pdp_meta_updates.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/word/CFQ7TTC0PBMB"
+page: "word_pdp_meta_updates"
+screenshot_dir: "screenshots_word_pdp"
+excel_file:     "locales_word_pdp.xlsx"
+
+
+checks:
+
+  # ── Page Title ─────────────────────────────────
+  - name:     "Page Title"
+    locator:  'title'
+    type:    head
+    expected: "Buy Microsoft Word (PC or Mac) | Cost of Word Only or with Microsoft 365"
+    semantic: true
+
+  # ── Page Meta Description ─────────────────────
+  - name:      "Page Meta Description"
+    locator:   'meta[name="description"]'
+    type:      attribute
+    attribute: content
+    expected:  "Get Microsoft Word to create content that stands out with advanced templates, smart assistance, and more. Find pricing and digital download options at Microsoft Store. For Windows or Mac."
+    semantic:  true      
+    

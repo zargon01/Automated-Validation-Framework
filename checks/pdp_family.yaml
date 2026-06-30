@@ -1,0 +1,21 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Run with: python run.py --checks checks/pdp_family.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/microsoft-365-family/cfq7ttc0k5dm"
+page: "pdp_family"
+
+checks:
+  - name:     "Promo text"
+    locator:  '[data-automation-test-id^="buy-box-promo"] p'
+    expected: >-
+      Subscription automatically renews at the regular price and selected term,
+      unless cancelled in Microsoft account. See
+
+  - name:     "Accordion AI text"
+    locator:  "li:first-child div.collapse.show div.accordion-body p:nth-child(2)"
+    expected: >-
+      Additionally, the Microsoft 365 Family plan lets you share your subscription
+      with up to five more people. Everyone gets their own apps and storage.
+      And with Microsoft 365 Premium, you also get extensive usage on advanced AI
+      experiences and access to Copilot features currently exclusive to Premium subscribers

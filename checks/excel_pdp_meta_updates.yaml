@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Excel PDP Meta Data
+# Run with: python run.py --checks checks/excel_pdp_meta_updates.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/excel/CFQ7TTC0PBMF"
+page: "excel_pdp_meta_updates"
+screenshot_dir: "screenshots_excel_pdp"
+excel_file:     "locales_excel_pdp.xlsx"
+
+
+checks:
+
+  # ── Page Title ─────────────────────────────────
+  - name:     "Page Title"
+    locator:  'title'
+    type:    head
+    expected: "Buy Microsoft Excel (PC or Mac) | Cost of Excel Only or with Microsoft 365"
+    semantic: true
+
+  # ── Page Meta Description ─────────────────────
+  - name:      "Page Meta Description"
+    locator:   'meta[name="description"]'
+    type:      attribute
+    attribute: content
+    expected:  "Get Microsoft Excel to collaborate, analyze, and visualize data with advanced templates and smart assistance. Find pricing and software download options at Microsoft Store. For Windows or Mac."
+    semantic:  true      
+    

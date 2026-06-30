@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Access PDP Metadata updates
+# Run with: python run.py --checks checks/access_pdp_meta_updates.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/access/CFQ7TTC0PD0B "
+page: "access_pdp_meta_updates"
+screenshot_dir: "screenshots_access_pdp"
+excel_file:     "locales_access_pdp.xlsx"
+
+
+checks:
+
+  # ── Page Title ─────────────────────────────────
+  - name:     "Page Title"
+    locator:  'title'
+    type:    head
+    expected: "Buy Microsoft Access - Standalone Price & License | Microsoft Store"
+    semantic: true
+
+  # ── Page Meta Description ─────────────────────
+  - name:      "Page Meta Description"
+    locator:   'meta[name="description"]'
+    type:      attribute
+    attribute: content
+    expected:  "Buy Microsoft Access online to create business database applications from templates or from scratch. Find pricing, digital download options, and more at Microsoft Store. For Windows 11 or Windows 10 on PC."
+    semantic:  true      
+    

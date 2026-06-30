@@ -1,0 +1,72 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Microsoft 365 Basic PDP
+# Run with: python run.py --checks checks/m365_basic.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  "https://www.microsoft.com/{region}/microsoft-365/p/microsoft-365-basic/cfq7ttc0ktxs"
+page: "m365_basic"
+
+checks:
+
+  # ── Promo text — all regions except de-de ─────────────────────────────────
+  - name:     "Promo text"
+    locator:  'xpath=//*[@id="rootContainer_BuyBox"]/section/div/div[2]/div/div[2]/div/p'
+    expected: >-
+      Subscription automatically renews at the regular price and selected term,
+      unless cancelled in Microsoft account. See
+    exclude_regions:
+      - de-de
+      - he-il
+
+  # ── Promo text — de-de only ───────────────────────────────────────────────
+  - name:     "Promo text (de-de)"
+    locator:  'xpath=//*[@id="rootContainer_BuyBox"]/section/div/div[2]/div/div[2]/div/p'
+    expected: >-
+      Subscription automatically renews at the regular price and selected term,
+      unless cancelled. See
+    regions:
+      - de-de
+
+  # ── Promo text — he-il only ───────────────────────────────────────────────
+  - name:     "Promo text (he-il)"
+    locator:  'xpath=//*[@id="rootContainer_BuyBox"]/section/div/div[2]/div/div[2]/div/p'
+    expected: >-
+      Subscription continues to be charged at the regular price and selected term, 
+      unless cancelled in Microsoft account. See
+    regions:
+      - he-il
+
+  # ── Terms link text — all regions except en-gb ────────────────────────────
+  - name:     "Terms link text"
+    locator:  '//*[@id="rootContainer_BuyBox"]/section/div/div[2]/div/div[2]/div/p/a'
+    expected: "Microsoft Store Terms of Sale."
+    exclude_regions:
+      - en-gb
+
+  # ── Terms link text — en-gb only ─────────────────────────────────────────
+  - name:     "Terms link text (en-gb)"
+    locator:  '[data-automation-test-id="buy-box-promo-text-right-body"] a[href*="fwlink"]'
+    expected: "About Recurring Billing"
+    regions:
+      - en-gb
+
+  # ── Terms link aria-label — all regions except en-gb ─────────────────────
+  - name:      "Terms link aria-label"
+    locator:   '//*[@id="rootContainer_BuyBox"]/section/div/div[2]/div/div[2]/div/p/a'
+    type:      attribute
+    attribute: aria-label
+    expected:  "Learn more about the Microsoft Store Terms of Sale."
+    semantic:  true      # use semantic match — other languages translate the aria-label
+    exclude_regions:
+      - en-gb
+
+  # ── Terms link aria-label — en-gb only ───────────────────────────────────
+  - name:      "Terms link aria-label (en-gb)"
+    locator:   '//*[@id="rootContainer_BuyBox"]/section/div/div[2]/div/div[2]/div/p/a'
+    # locator:   '[data-automation-test-id="buy-box-promo-text-right-body"] a[href*="fwlink"]'
+    type:      attribute
+    attribute: aria-label
+    expected:  "Learn more about recurring billing subscriptions in the United Kingdom."
+    semantic:  true
+    regions:
+      - en-gb

@@ -1,0 +1,138 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Check suite: Renew AI Sharing
+# Run with: python run.py --checks checks/renew_ai_sharing.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+url:  ""
+page: "renew_ai_sharing"
+screenshot_dir: "renew_ai_sharing"
+excel_file:     "renew_ai_sharing.xlsx"
+
+checks:
+
+  # ── Image Alt Text ─────────────────────────────────
+  - name:     "Image Alt Text"
+    locator:  'section.feature-card img'
+    type:     attribute
+    attribute: alt
+    expected: "Various apps that are part of a Microsoft 365 subscription, such as: Microsoft Copilot, Word, Excel, PowerPoint, Outlook, OneNote, OneDrive, Microsoft Defender, and Microsoft Teams."
+    semantic: true
+
+  # ── M365 Premium Subheading  ─────────────────────
+  - name:      "M365 Premium Subheading"
+    locator:   'div.ow-subheading p'
+    nth:      1
+    expected:  "Microsoft 365 Premium is a subscription for one to six people that includes extensive AI usage and exclusive Copilot features,2 up to 6 TB of cloud storage (1 TB per person), powerful productivity apps with Copilot, advanced security for your data and devices, and ongoing customer support."
+    semantic:  true      
+    
+  # ── M365 Family Subheading  ─────────────────────
+  - name:      "M365 Family Subheading"
+    locator:   'div.ow-subheading p'
+    nth:      2
+    expected:  "Microsoft 365 Family is a subscription for one to six people that includes up to 6 TB of cloud storage (1 TB per person), powerful productivity apps with Microsoft Copilot,2 advanced security for your data and devices, and ongoing customer support."
+    semantic:  true     
+
+  # ── M365 Personal Subheading  ─────────────────────
+  - name:      "M365 Personal Subheading"
+    locator:   'div.ow-subheading p'
+    nth:      3
+    expected:  "Microsoft 365 Personal is a subscription for one person that includes 1 TB (1000 GB) of cloud storage, powerful productivity apps with Microsoft Copilot,2 advanced security for your data and devices, and ongoing customer support."
+    semantic:  true   
+
+  # ── Content Cards  ─────────────────────
+    # ── Row 1 Card 1  ─────────────────────
+  - name:      "Card 1 heading"
+    locator:   'h3.component-heading'
+    nth:      1
+    expected:  "Powerful productivity apps with AI"
+    semantic:  true   
+
+  - name:      "Card 1 subheading"
+    locator:   'div.card-body p'
+    nth:      3
+    expected:  "Streamline your day with desktop versions of apps like Word, Excel, PowerPoint, Outlook, and OneNote with Microsoft Copilot"
+    semantic:  true  
+
+  - name:      "Card 1 Image Name"
+    locator:   'img.card-img'
+    nth:      2
+    type:     attribute
+    attribute: data-src
+    expected:  "Content-Card-Horizontal-Microsoft-Copilot-App-Icon"
+    #use contains
+
+  - name:      "Card 1 alt text"
+    locator:   'img.card-img'
+    nth:      2
+    type:     attribute
+    attribute: alt
+    expected:  "Microsoft Copilot."
+    #use contains
+
+
+    # ── Row 1 Card 2  ─────────────────────
+  - name:      "Card 2 heading"
+    locator:   'h3.component-heading'
+    nth:      2
+    expected:  "Simplify your online security"
+    semantic:  true   
+
+  - name:      "Card 2 subheading"
+    locator:   'div.card-body p'
+    nth:      4
+    expected:  "Keep you and your family safer online with continuous monitoring for threats, real-time alerts, tips, and expert guidance from Microsoft Defender."
+    semantic:  true  
+
+  - name:      "Card 2 Image Name"
+    locator:   'img.card-img'
+    nth:      3
+    type:     attribute
+    attribute: data-src
+    expected:  "Content-Card-M365-Defender-App-Icon"
+    #use contains
+
+  - name:      "Card 2 alt text"
+    locator:   'img.card-img'
+    nth:      3
+    type:     attribute
+    attribute: alt
+    expected:  "Microsoft Defender."
+    #use contains
+
+
+    # ── Row 2 Card 3  ─────────────────────
+  - name:      "R2C3 heading"
+    locator:   'h3.component-heading'
+    nth:      3
+    expected:  "All-day video calling"
+    semantic:  true   
+
+  - name:      "R2C3 subheading"
+    locator:   'div.card-body p'
+    nth:      5
+    expected:  "Join group calls and talk for up to 30 hours with up to 300 people with Microsoft Teams."
+    semantic:  true  
+
+  - name:      "Card 3 Image Name"
+    locator:   'img.card-img'
+    nth:      4
+    type:     attribute
+    attribute: data-src
+    expected:  "Content-Card-M365-Teams-App-Icon"
+    #use contains
+
+  - name:      "Card 2 alt text"
+    locator:   'img.card-img'
+    nth:      3
+    type:     attribute
+    attribute: alt
+    expected:  "Microsoft Teams."
+    #use contains
+
+
+  # ── FAQ1 ─────────────────────────────────
+  - name:     "FAQ1 Answer"
+    locator:  'div.accordion-body p'
+    nth:      2
+    expected: "Microsoft 365 Personal, Microsoft 365 Family, and Microsoft 365 Premium are subscriptions that include powerful productivity apps and creativity tools with AI-powered features. In addition to desktop versions of popular Microsoft 365 apps like Word, PowerPoint, Excel, and Outlook with Microsoft Copilot, you also get spacious cloud storage, advanced security, and cloud-connected features that let you collaborate on files in real time. With a subscription, you'll always have the latest features, fixes, and security updates along with ongoing tech support at no extra cost. You can choose to pay for your subscription on a monthly or yearly basis, and use your apps on multiple PCs, Macs, tablets, and phones. Additionally, the Microsoft 365 Family and Microsoft 365 Premium plans let you share your subscription with up to five more people. Everyone gets their own apps and storage. Plus, they get access to AI features2 and shared usage limits, including Copilot chat in their apps. And with Microsoft 365 Premium, you also get extensive usage on advanced AI experiences and access to Copilot features currently exclusive to Premium subscribers."
+    semantic: true

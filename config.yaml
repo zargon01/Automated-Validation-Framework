@@ -1,0 +1,19 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Global settings — shared across all test runs
+# Page-specific config (url, checks) lives in checks/*.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+
+# screenshot_dir: "screenshots"
+# excel_file:     "regions_checks.xlsx"
+
+# Matching
+semantic_threshold:      0.80
+
+# Translation
+translation_timeout_s:   30
+translation_poll_s:      0.5
+after_translate_wait_ms: 3000
+
+# Browser
+headless: true
+slow_mo:  100
